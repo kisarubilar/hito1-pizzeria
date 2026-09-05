@@ -7,7 +7,7 @@ Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma M�
 ## 🚀 Vista Previa y Despliegue
 
 - **Repositorio GitHub:** [https://github.com/kisarubilar/hito1-pizzeria](https://github.com/kisarubilar/hito1-pizzeria)
-- **Demo en vivo (Vercel / Netlify):** *[Agrega tu enlace aquí si lo desplegaste](https://kisarubilar.github.io/hito1-pizzeria/)*
+- **Demo en vivo (Vercel / Netlify):** *[Haz click aquí](https://kisarubilar.github.io/hito1-pizzeria/)*
 
 ---
 
