@@ -1,16 +1,41 @@
-# React + Vite
+# 🍕 Pizzería Mamma Mía - Hito 1 (React + Vite + Bootstrap)
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma Mía. Este proyecto corresponde al primer hito del curso de Desarrollo Web Frontend, enfocado en la maquetación modular, estructuración de componentes y consumo de estilos con Bootstrap 5.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Vista Previa y Despliegue
 
-## React Compiler
+- **Repositorio GitHub:** [https://github.com/kisarubilar/hito1-pizzeria](https://github.com/kisarubilar/hito1-pizzeria)
+- **Demo en vivo (Vercel / Netlify):** *[Agrega tu enlace aquí si lo desplegaste](https://kisarubilar.github.io/hito1-pizzeria/)*
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the Oxlint configuration
+## 🛠️ Tecnologías Utilizadas
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+- **React** (Vite)
+- **Bootstrap 5** (CSS y componentes responsivos)
+- **JavaScript (ES6+)**
+- **HTML5 & CSS3**
+
+---
+
+## 📑 Requerimientos e Hitos Desarrollados
+
+1. **Estructura Modular de Componentes:**
+   - `Navbar`: Navegación superior con estados simulados (`token` para Login/Register o Profile/Logout) y cálculo visual del total.
+   - `Header`: Banner principal con imagen de fondo (*overlay*) y mensaje de bienvenida.
+   - `CardPizza`: Componente reutilizable para renderizar cada pizza dinámicamente con sus props (`name`, `price`, `ingredients`, `img`).
+   - `Home`: Contenedor principal que organiza la grilla responsiva de Bootstrap.
+   - `Footer`: Pie de página informativo.
+
+2. **Formateo de Datos (Utils):**
+   - Creación de función `formatNumber` en `src/utils/format.js` para formatear valores numéricos a miles (e.g., `$5.950`).
+
+3. **Estilos y Maquetación:**
+   - Integración de Bootstrap 5 mediante `npm`.
+   - Limpieza de estilos base de Vite para asegurar compatibilidad completa con el diseño de referencia (`ej7`).
+
+---
+
+Desarrollado por Kisa Rubilar
