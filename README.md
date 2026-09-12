@@ -1,13 +1,13 @@
-# 🍕 Pizzería Mamma Mía - Hito 1 (React + Vite + Bootstrap)
+# 🍕 Pizzería Mamma Mía (React + Vite + Bootstrap)
 
-Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma Mía. Este proyecto corresponde al primer hito del curso de Desarrollo Web Frontend, enfocado en la maquetación modular, estructuración de componentes y consumo de estilos con Bootstrap 5.
+Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma Mía. Este proyecto abarca el desarrollo de la maquetación modular y el manejo de estados y eventos en formularios para autenticación de usuarios.
 
 ---
 
 ## 🚀 Vista Previa y Despliegue
 
+- **Demo en vivo (GitHub Pages):** [Haz clíck aquí](https://kisarubilar.github.io/hito1-pizzeria/)
 - **Repositorio GitHub:** [https://github.com/kisarubilar/hito1-pizzeria](https://github.com/kisarubilar/hito1-pizzeria)
-- **Demo en vivo (Vercel / Netlify):** *[Haz click aquí](https://kisarubilar.github.io/hito1-pizzeria/)*
 
 ---
 
@@ -20,22 +20,38 @@ Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma M�
 
 ---
 
-## 📑 Requerimientos e Hitos Desarrollados
+## 📑 Hitos Desarrollados
 
-1. **Estructura Modular de Componentes:**
-   - `Navbar`: Navegación superior con estados simulados (`token` para Login/Register o Profile/Logout) y cálculo visual del total.
-   - `Header`: Banner principal con imagen de fondo (*overlay*) y mensaje de bienvenida.
-   - `CardPizza`: Componente reutilizable para renderizar cada pizza dinámicamente con sus props (`name`, `price`, `ingredients`, `img`).
-   - `Home`: Contenedor principal que organiza la grilla responsiva de Bootstrap.
-   - `Footer`: Pie de página informativo.
+### 🔹 Hito 1: Componentes y Estilos Base
+1. **Estructura Modular:**
+   - `Navbar`: Navegación superior con estados simulados (`token` para Login/Register o Profile/Logout) y total visual.
+   - `Header`: Banner principal con overlay de imagen de fondo y mensaje de bienvenida.
+   - `CardPizza`: Componente reutilizable con props (`name`, `price`, `ingredients`, `img`).
+   - `Home`: Grilla responsiva de productos.
+   - `Footer`: Pie de página.
+2. **Utilidades:**
+   - Función `formatNumber` en `src/utils/format.js` para dar formato de miles a los precios (ej: `$5.950`).
 
-2. **Formateo de Datos (Utils):**
-   - Creación de función `formatNumber` en `src/utils/format.js` para formatear valores numéricos a miles (e.g., `$5.950`).
-
-3. **Estilos y Maquetación:**
-   - Integración de Bootstrap 5 mediante `npm`.
-   - Limpieza de estilos base de Vite para asegurar compatibilidad completa con el diseño de referencia (`ej7`).
+### 🔹 Hito 2: Estados y Eventos (Formularios)
+1. **Componente `RegisterPage`:**
+   - Formulario de registro con inputs para **Email**, **Contraseña** y **Confirmar contraseña**.
+   - Validaciones:
+     - Todos los campos obligatorios.
+     - Contraseña con un mínimo de 6 caracteres.
+     - Coincidencia exacta entre la contraseña y su confirmación.
+2. **Componente `LoginPage`:**
+   - Formulario de inicio de sesión con inputs para **Email** y **Contraseña**.
+   - Validaciones:
+     - Todos los campos obligatorios.
+     - Contraseña con un mínimo de 6 caracteres.
+3. **Manejo de Respuestas:**
+   - Feedback dinámico mediante alertas nativas (`alert`) indicando éxito (`Authentication successful!`) o los errores de validación correspondientes.
 
 ---
 
+## 🔧 Instalación y Ejecución Local
+
+1. Clonar el repositorio:
+   ```bash
+   git clone [https://github.com/kisarubilar/hito1-pizzeria.git](https://github.com/kisarubilar/hito1-pizzeria.git)
 Desarrollado por Kisa Rubilar
