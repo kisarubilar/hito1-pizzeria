@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { pizzaCart } from '../pizzas'; // Importa pizzaCart desde pizzas.js
+import { pizzaCart, pizzas } from '../pizzas';
 import { formatNumber } from '../utils/format';
 
 const Cart = () => {
