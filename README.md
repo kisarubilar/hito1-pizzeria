@@ -1,12 +1,12 @@
 # 🍕 Pizzería Mamma Mía (React + Vite + Bootstrap)
 
-Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma Mía. Este proyecto abarca el desarrollo de la maquetación modular y el manejo de estados y eventos en formularios para autenticación de usuarios.
+Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma Mía. Este proyecto abarca el desarrollo de la maquetación modular, el manejo de formularios de autenticación y la renderización dinámica de productos junto con la simulación interactiva de un carrito de compras.
 
 ---
 
 ## 🚀 Vista Previa y Despliegue
 
-- **Demo en vivo (GitHub Pages):** [Haz clíck aquí](https://kisarubilar.github.io/hito1-pizzeria/)
+- **Demo en vivo (GitHub Pages):** [Haz clic aquí](https://kisarubilar.github.io/hito1-pizzeria/)
 - **Repositorio GitHub:** [https://github.com/kisarubilar/hito1-pizzeria](https://github.com/kisarubilar/hito1-pizzeria)
 
 ---
@@ -35,17 +35,26 @@ Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma M�
 ### 🔹 Hito 2: Estados y Eventos (Formularios)
 1. **Componente `RegisterPage`:**
    - Formulario de registro con inputs para **Email**, **Contraseña** y **Confirmar contraseña**.
-   - Validaciones:
-     - Todos los campos obligatorios.
-     - Contraseña con un mínimo de 6 caracteres.
-     - Coincidencia exacta entre la contraseña y su confirmación.
+   - Validaciones: todos los campos obligatorios, mínimo 6 caracteres en la contraseña y coincidencia entre contraseñas.
 2. **Componente `LoginPage`:**
    - Formulario de inicio de sesión con inputs para **Email** y **Contraseña**.
-   - Validaciones:
-     - Todos los campos obligatorios.
-     - Contraseña con un mínimo de 6 caracteres.
+   - Validaciones: todos los campos obligatorios y mínimo 6 caracteres en la contraseña.
 3. **Manejo de Respuestas:**
    - Feedback dinámico mediante alertas nativas (`alert`) indicando éxito (`Authentication successful!`) o los errores de validación correspondientes.
+
+### 🔹 Hito 3: Renderización Dinámica de Componentes y Carrito de Compras
+1. **Manejo de Datos Centralizado:**
+   - Creación del archivo `src/pizzas.js` con los datos de productos (`pizzas`) y del carrito (`pizzaCart`).
+2. **Componente `Home`:**
+   - Mapeo dinámico del catálogo de productos con `.map()`, generando automáticamente las tarjetas correspondientes.
+3. **Componente `CardPizza`:**
+   - Renderización dinámica mediante props e iteración de la lista de ingredientes usando `.map()` para cada elemento `<li>`.
+4. **Componente `Cart` (Carrito de Compras):**
+   - Estado local con `useState` para gestionar el listado de productos en el carrito.
+   - Botones para incrementar (`+`) y decrementar (`-`) la cantidad de cada pizza.
+   - Eliminación automática del producto del carrito al llegar a cantidad `0`.
+   - Cálculo en tiempo real del monto total de la compra.
+   - Botón de pago desactivado dinámicamente si el carrito está vacío.
 
 ---
 
