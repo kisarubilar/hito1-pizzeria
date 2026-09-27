@@ -1,5 +1,5 @@
 import Header from './Header';
-import CardPizza from './CardPizza';
+import CardPizza from './Cardpizza';
 import { pizzas } from '../pizzas'; // Ajusta la ruta según dónde guardaste pizzas.js
 
 const Home = () => {
