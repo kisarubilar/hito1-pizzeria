@@ -1,6 +1,6 @@
 # 🍕 Pizzería Mamma Mía (React + Vite + Bootstrap)
 
-Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma Mía. Este proyecto abarca el desarrollo de la maquetación modular, el manejo de formularios de autenticación y la renderización dinámica de productos junto con la simulación interactiva de un carrito de compras.
+Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma Mía. Este proyecto abarca el desarrollo de la maquetación modular, el manejo de formularios de autenticación, la renderización dinámica de productos, la gestión interactiva de un carrito de compras y el consumo de APIs externas mediante `useEffect` y `fetch`.
 
 ---
 
@@ -55,6 +55,21 @@ Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma M�
    - Eliminación automática del producto del carrito al llegar a cantidad `0`.
    - Cálculo en tiempo real del monto total de la compra.
    - Botón de pago desactivado dinámicamente si el carrito está vacío.
+
+### 🔹 Hito 4: Consumo de APIs en React
+1. **Consumo de API en `Home`:**
+   - Reemplazo del arreglo estático local por una petición asíncrona a la API externa (`http://localhost:5000/api/pizzas`) dentro del hook `useEffect`.
+   - Almacenamiento y renderizado dinámico del listado general de pizzas mediante `useState`.
+2. **Nuevo Componente `Pizza`:**
+   - Creación de vista de detalle individual que consume el endpoint `http://localhost:5000/api/pizzas/p001` mediante `useEffect` y `fetch`.
+   - Visualización completa de las propiedades recibidas desde la API:
+     - Nombre de la pizza.
+     - Precio formateado.
+     - Lista iterada de ingredientes.
+     - Imagen descriptiva.
+     - Descripción detallada de la pizza.
+3. **Integración en `App.jsx`:**
+   - Renderizado del componente `<Pizza />` para la simulación de vista detalle.
 
 ---
 
