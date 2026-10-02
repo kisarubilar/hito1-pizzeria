@@ -1,6 +1,16 @@
 import { useState, useEffect } from 'react';
 import { formatNumber } from '../utils/format';
 
+// Datos de respaldo por si el servidor local no está disponible (ej: en el celular)
+const fallbackPizza = {
+  id: "p001",
+  name: "napolitana",
+  price: 5950,
+  ingredients: ["mozzarella", "tomates", "jamón", "orégano"],
+  img: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=500&auto=format&fit=crop&q=60",
+  desc: "La pizza Napolitana es un clásico de la cocina italiana con base crujiente, suave salsa de tomate, mozzarella fresca, jamón cocido de alta calidad y un toque de orégano."
+};
+
 const Pizza = () => {
   const [pizza, setPizza] = useState(null);
 
@@ -11,10 +21,12 @@ const Pizza = () => {
   const getPizza = async () => {
     try {
       const response = await fetch('http://localhost:5000/api/pizzas/p001');
+      if (!response.ok) throw new Error('Respuesta no exitosa');
       const data = await response.json();
       setPizza(data);
     } catch (error) {
-      console.error('Error al obtener la pizza:', error);
+      console.warn('API local no alcanzable, cargando datos de respaldo:', error);
+      setPizza(fallbackPizza); // Si falla la API local, carga la pizza de respaldo
     }
   };
 

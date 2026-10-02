@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import Header from './Header';
 import CardPizza from './CardPizza';
+import { pizzas as fallbackPizzas } from '../pizzas'; // Importa el array del Hito 3
 
 const Home = () => {
   const [pizzas, setPizzas] = useState([]);
 
-  // Consumir API de pizzas
   useEffect(() => {
     getPizzas();
   }, []);
@@ -13,10 +13,12 @@ const Home = () => {
   const getPizzas = async () => {
     try {
       const response = await fetch('http://localhost:5000/api/pizzas');
+      if (!response.ok) throw new Error('Respuesta no exitosa');
       const data = await response.json();
       setPizzas(data);
     } catch (error) {
-      console.error('Error al obtener las pizzas:', error);
+      console.warn('API local no alcanzable, cargando catálogo de respaldo:', error);
+      setPizzas(fallbackPizzas);
     }
   };
 
