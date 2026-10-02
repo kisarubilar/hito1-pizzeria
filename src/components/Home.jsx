@@ -1,8 +1,25 @@
+import { useState, useEffect } from 'react';
 import Header from './Header';
-import CardPizza from './Cardpizza';
-import { pizzas } from '../pizzas'; // Ajusta la ruta según dónde guardaste pizzas.js
+import CardPizza from './CardPizza';
 
 const Home = () => {
+  const [pizzas, setPizzas] = useState([]);
+
+  // Consumir API de pizzas
+  useEffect(() => {
+    getPizzas();
+  }, []);
+
+  const getPizzas = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/pizzas');
+      const data = await response.json();
+      setPizzas(data);
+    } catch (error) {
+      console.error('Error al obtener las pizzas:', error);
+    }
+  };
+
   return (
     <>
       <Header />

@@ -1,27 +1,28 @@
 import Navbar from './components/Navbar';
-import Cart from './components/Cart';
 import Footer from './components/Footer';
+import Pizza from './components/Pizza';
 // import Home from './components/Home';
-// import RegisterPage from './components/RegisterPage';
-// import LoginPage from './components/LoginPage';
+// import Cart from './components/Cart';
+// import RegisterPage from './components/Register';
+// import LoginPage from './components/Login';
 import './App.css';
 
-function App() {
+const App = () => {
   return (
     <div className="d-flex flex-column min-vh-100">
       <Navbar />
       
       <main className="flex-grow-1">
-        {/* Descomenta la vista que necesites evaluar */}
         {/* <Home /> */}
         {/* <RegisterPage /> */}
         {/* <LoginPage /> */}
-        <Cart />
+        {/* <Cart /> */}
+        <Pizza />
       </main>
 
       <Footer />
     </div>
   );
-}
+};
 
 export default App;
