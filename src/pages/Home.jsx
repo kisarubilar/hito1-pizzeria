@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import Header from './Header';
-import CardPizza from './CardPizza';
+import Header from '../components/Header';
+import CardPizza from '../components/CardPizza';
 import { pizzas as fallbackPizzas } from '../pizzas'; // Importa el array del Hito 3
 
 const Home = () => {

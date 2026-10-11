@@ -1,35 +1,53 @@
-// src/components/Navbar.jsx
-import { formatNumber } from '../utils/format';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const total = 25000;
-  const token = false; // Cambia a true para probar los botones Profile y Logout
+  const token = false; // Simulación de token
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark text-white px-4">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-4">
       <div className="container-fluid">
-        <span className="navbar-brand fw-bold">¡Pizzería Mamma Mia!</span>
-        
-        <div className="d-flex justify-content-between w-100 align-items-center">
-          <div className="d-flex gap-2">
-            <button className="btn btn-outline-light btn-sm">🍕 Home</button>
-            
+        <Link className="navbar-brand fw-bold" to="/">
+          Pizzería Mamma Mía!
+        </Link>
+        <div className="collapse navbar-collapse">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0 gap-2">
+            <li className="nav-item">
+              <Link to="/" className="btn btn-outline-light btn-sm">
+                🍕 Home
+              </Link>
+            </li>
             {token ? (
               <>
-                <button className="btn btn-outline-light btn-sm">🔓 Profile</button>
-                <button className="btn btn-outline-light btn-sm">🔒 Logout</button>
+                <li className="nav-item">
+                  <Link to="/profile" className="btn btn-outline-light btn-sm">
+                    🔓 Profile
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <button className="btn btn-outline-light btn-sm">
+                    🔒 Logout
+                  </button>
+                </li>
               </>
             ) : (
               <>
-                <button className="btn btn-outline-light btn-sm">🔐 Login</button>
-                <button className="btn btn-outline-light btn-sm">🔐 Register</button>
+                <li className="nav-item">
+                  <Link to="/login" className="btn btn-outline-light btn-sm">
+                    🔐 Login
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/register" className="btn btn-outline-light btn-sm">
+                    🔐 Register
+                  </Link>
+                </li>
               </>
             )}
-          </div>
-
-          <button className="btn btn-outline-info btn-sm fw-bold">
-            🛒 Total: ${formatNumber(total)}
-          </button>
+          </ul>
+          <Link to="/cart" className="btn btn-outline-info btn-sm">
+            🛒 Total: ${total.toLocaleString()}
+          </Link>
         </div>
       </div>
     </nav>
