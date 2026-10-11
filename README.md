@@ -1,6 +1,6 @@
 # 🍕 Pizzería Mamma Mía (React + Vite + Bootstrap)
 
-Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma Mía. Este proyecto abarca el desarrollo de la maquetación modular, el manejo de formularios de autenticación, la renderización dinámica de productos, la gestión interactiva de un carrito de compras y el consumo de APIs externas mediante `useEffect` y `fetch`.
+Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma Mía. Este proyecto abarca el desarrollo de la maquetación modular, formularios de autenticación, renderización dinámica de productos, gestión de carrito de compras, consumo de APIs y la implementación completa de enrutamiento con React Router.
 
 ---
 
@@ -14,6 +14,7 @@ Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma M�
 ## 🛠️ Tecnologías Utilizadas
 
 - **React** (Vite)
+- **React Router DOM**
 - **Bootstrap 5** (CSS y componentes responsivos)
 - **JavaScript (ES6+)**
 - **HTML5 & CSS3**
@@ -24,7 +25,7 @@ Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma M�
 
 ### 🔹 Hito 1: Componentes y Estilos Base
 1. **Estructura Modular:**
-   - `Navbar`: Navegación superior con estados simulados (`token` para Login/Register o Profile/Logout) y total visual.
+   - `Navbar`: Navegación superior con estados simulados y total visual.
    - `Header`: Banner principal con overlay de imagen de fondo y mensaje de bienvenida.
    - `CardPizza`: Componente reutilizable con props (`name`, `price`, `ingredients`, `img`).
    - `Home`: Grilla responsiva de productos.
@@ -34,42 +35,38 @@ Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma M�
 
 ### 🔹 Hito 2: Estados y Eventos (Formularios)
 1. **Componente `RegisterPage`:**
-   - Formulario de registro con inputs para **Email**, **Contraseña** y **Confirmar contraseña**.
-   - Validaciones: todos los campos obligatorios, mínimo 6 caracteres en la contraseña y coincidencia entre contraseñas.
+   - Formulario de registro con validaciones de campos obligatorios, mínimo de 6 caracteres y coincidencia exacta de contraseñas.
 2. **Componente `LoginPage`:**
-   - Formulario de inicio de sesión con inputs para **Email** y **Contraseña**.
-   - Validaciones: todos los campos obligatorios y mínimo 6 caracteres en la contraseña.
+   - Formulario de inicio de sesión validando email y contraseña.
 3. **Manejo de Respuestas:**
-   - Feedback dinámico mediante alertas nativas (`alert`) indicando éxito (`Authentication successful!`) o los errores de validación correspondientes.
+   - Feedback dinámico mediante alertas nativas (`alert`) indicando éxito o errores de validación.
 
 ### 🔹 Hito 3: Renderización Dinámica de Componentes y Carrito de Compras
 1. **Manejo de Datos Centralizado:**
-   - Creación del archivo `src/pizzas.js` con los datos de productos (`pizzas`) y del carrito (`pizzaCart`).
-2. **Componente `Home`:**
-   - Mapeo dinámico del catálogo de productos con `.map()`, generando automáticamente las tarjetas correspondientes.
-3. **Componente `CardPizza`:**
-   - Renderización dinámica mediante props e iteración de la lista de ingredientes usando `.map()` para cada elemento `<li>`.
-4. **Componente `Cart` (Carrito de Compras):**
-   - Estado local con `useState` para gestionar el listado de productos en el carrito.
-   - Botones para incrementar (`+`) y decrementar (`-`) la cantidad de cada pizza.
-   - Eliminación automática del producto del carrito al llegar a cantidad `0`.
-   - Cálculo en tiempo real del monto total de la compra.
-   - Botón de pago desactivado dinámicamente si el carrito está vacío.
+   - Creación del archivo `src/pizzas.js` con el catálogo de productos (`pizzas`) y elementos del carrito (`pizzaCart`).
+2. **Componente `Home` y `CardPizza`:**
+   - Renderizado dinámico de tarjetas e iteración de ingredientes mediante `.map()`.
+3. **Componente `Cart` (Carrito de Compras):**
+   - Manejo de estado con `useState`, botones de incremento/decremento, eliminación automática al llegar a cantidad `0` y cálculo dinámico del total.
 
 ### 🔹 Hito 4: Consumo de APIs en React
-1. **Consumo de API en `Home`:**
-   - Reemplazo del arreglo estático local por una petición asíncrona a la API externa (`http://localhost:5000/api/pizzas`) dentro del hook `useEffect`.
-   - Almacenamiento y renderizado dinámico del listado general de pizzas mediante `useState`.
-2. **Nuevo Componente `Pizza`:**
-   - Creación de vista de detalle individual que consume el endpoint `http://localhost:5000/api/pizzas/p001` mediante `useEffect` y `fetch`.
-   - Visualización completa de las propiedades recibidas desde la API:
-     - Nombre de la pizza.
-     - Precio formateado.
-     - Lista iterada de ingredientes.
-     - Imagen descriptiva.
-     - Descripción detallada de la pizza.
-3. **Integración en `App.jsx`:**
-   - Renderizado del componente `<Pizza />` para la simulación de vista detalle.
+1. **Consumo de API:**
+   - Integración del hook `useEffect` y `fetch` para consumir el listado general en `Home` y el detalle individual de una pizza en `Pizza`, con respaldo de datos (*fallback*) para despliegues públicos.
+
+### 🔹 Hito 5: React Router I (Enrutamiento)
+1. **Reorganización de Páginas:**
+   - Traslado de los componentes principales a la carpeta `src/pages/`.
+2. **Configuración de Rutas:**
+   - Implementación de `BrowserRouter`, `Routes` y `Route` para manejar las rutas principales:
+     - `/` (`Home`)
+     - `/register` (`RegisterPage`)
+     - `/login` (`LoginPage`)
+     - `/cart` (`Cart`)
+     - `/pizza/p001` (`Pizza`)
+     - `/profile` (`Profile`)
+     - `*` Ruta comodín para `NotFound` (página 404 con enlace de redirección al inicio).
+3. **Navegación Interactiva:**
+   - Actualización del `Navbar` utilizando componentes `<Link>` de `react-router-dom` y redirección del botón de carrito hacia `/cart`.
 
 ---
 
