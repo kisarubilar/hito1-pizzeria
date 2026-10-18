@@ -1,6 +1,6 @@
 # 🍕 Pizzería Mamma Mía (React + Vite + Bootstrap)
 
-Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma Mía. Este proyecto abarca el desarrollo de la maquetación modular, formularios de autenticación, renderización dinámica de productos, gestión de carrito de compras, consumo de APIs y la implementación completa de enrutamiento con React Router.
+Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma Mía. Este proyecto abarca el desarrollo de la maquetación modular, formularios de autenticación, renderización dinámica de productos, gestión global del carrito de compras mediante Context API, consumo de APIs y la implementación completa de enrutamiento con React Router.
 
 ---
 
@@ -15,6 +15,7 @@ Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma M�
 
 - **React** (Vite)
 - **React Router DOM**
+- **Context API** (Gestión de Estado Global)
 - **Bootstrap 5** (CSS y componentes responsivos)
 - **JavaScript (ES6+)**
 - **HTML5 & CSS3**
@@ -25,7 +26,7 @@ Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma M�
 
 ### 🔹 Hito 1: Componentes y Estilos Base
 1. **Estructura Modular:**
-   - `Navbar`: Navegación superior con estados simulados y total visual.
+   - `Navbar`: Navegación superior con estados y total visual.
    - `Header`: Banner principal con overlay de imagen de fondo y mensaje de bienvenida.
    - `CardPizza`: Componente reutilizable con props (`name`, `price`, `ingredients`, `img`).
    - `Home`: Grilla responsiva de productos.
@@ -34,39 +35,34 @@ Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma M�
    - Función `formatNumber` en `src/utils/format.js` para dar formato de miles a los precios (ej: `$5.950`).
 
 ### 🔹 Hito 2: Estados y Eventos (Formularios)
-1. **Componente `RegisterPage`:**
-   - Formulario de registro con validaciones de campos obligatorios, mínimo de 6 caracteres y coincidencia exacta de contraseñas.
-2. **Componente `LoginPage`:**
-   - Formulario de inicio de sesión validando email y contraseña.
-3. **Manejo de Respuestas:**
+1. **Componentes `RegisterPage` y `LoginPage`:**
+   - Formularios interactivos con validación de campos obligatorios, control de longitud mínima de caracteres y coincidencia de contraseñas.
+2. **Manejo de Respuestas:**
    - Feedback dinámico mediante alertas nativas (`alert`) indicando éxito o errores de validación.
 
 ### 🔹 Hito 3: Renderización Dinámica de Componentes y Carrito de Compras
 1. **Manejo de Datos Centralizado:**
-   - Creación del archivo `src/pizzas.js` con el catálogo de productos (`pizzas`) y elementos del carrito (`pizzaCart`).
+   - Creación del archivo `src/pizzas.js` con el catálogo de productos y elementos iniciales del carrito.
 2. **Componente `Home` y `CardPizza`:**
    - Renderizado dinámico de tarjetas e iteración de ingredientes mediante `.map()`.
-3. **Componente `Cart` (Carrito de Compras):**
-   - Manejo de estado con `useState`, botones de incremento/decremento, eliminación automática al llegar a cantidad `0` y cálculo dinámico del total.
+3. **Componente `Cart`:**
+   - Manejo de estado local, botones de incremento y decremento, eliminación automática al llegar a cantidad `0` y cálculo en tiempo real del total.
 
 ### 🔹 Hito 4: Consumo de APIs en React
 1. **Consumo de API:**
-   - Integración del hook `useEffect` y `fetch` para consumir el listado general en `Home` y el detalle individual de una pizza en `Pizza`, con respaldo de datos (*fallback*) para despliegues públicos.
+   - Integración del hook `useEffect` y `fetch` para consumir el listado general en `Home` y el detalle individual en `Pizza`, con respaldo de datos (*fallback*) para despliegues públicos.
 
 ### 🔹 Hito 5: React Router I (Enrutamiento)
-1. **Reorganización de Páginas:**
-   - Traslado de los componentes principales a la carpeta `src/pages/`.
-2. **Configuración de Rutas:**
-   - Implementación de `BrowserRouter`, `Routes` y `Route` para manejar las rutas principales:
-     - `/` (`Home`)
-     - `/register` (`RegisterPage`)
-     - `/login` (`LoginPage`)
-     - `/cart` (`Cart`)
-     - `/pizza/p001` (`Pizza`)
-     - `/profile` (`Profile`)
-     - `*` Ruta comodín para `NotFound` (página 404 con enlace de redirección al inicio).
-3. **Navegación Interactiva:**
-   - Actualización del `Navbar` utilizando componentes `<Link>` de `react-router-dom` y redirección del botón de carrito hacia `/cart`.
+1. **Enrutamiento y Vistas:**
+   - Configuración de `BrowserRouter`, `Routes` y `Route` para manejar las páginas principales (`/`, `/register`, `/login`, `/cart`, `/pizza/p001`, `/profile` y la ruta comodín `404` para páginas no encontradas).
+2. **Navegación Interactiva:**
+   - Uso de componentes `<Link>` de `react-router-dom` en el `Navbar`.
+
+### 🔹 Hito 6: Context I (Estado Global del Carrito)
+1. **Implementación de Context API:**
+   - Creación de `CartContext` y `CartProvider` para centralizar la lógica de negocio del carrito de compras en toda la aplicación.
+2. **Consumo Global:**
+   - Sincronización en tiempo real del precio total y cantidad de productos entre el `Navbar`, la página principal `Home` (botón añadir) y la vista detallada del carrito (`Cart`).
 
 ---
 
