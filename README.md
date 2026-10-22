@@ -1,6 +1,6 @@
 # 🍕 Pizzería Mamma Mía (React + Vite + Bootstrap)
 
-Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma Mía. Este proyecto abarca el desarrollo de la maquetación modular, formularios de autenticación, renderización dinámica de productos, gestión global del carrito de compras mediante Context API, consumo de APIs y la implementación completa de enrutamiento con React Router.
+Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma Mía. Este proyecto abarca el desarrollo de la maquetación modular, formularios de autenticación, renderización dinámica de productos, gestión global del carrito de compras, consumo de APIs externas, enrutamiento dinámico y protección de rutas mediante React Router y Context API.
 
 ---
 
@@ -15,7 +15,7 @@ Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma M�
 
 - **React** (Vite)
 - **React Router DOM**
-- **Context API** (Gestión de Estado Global)
+- **Context API** (Gestión de Estado Global de Carrito y Usuario)
 - **Bootstrap 5** (CSS y componentes responsivos)
 - **JavaScript (ES6+)**
 - **HTML5 & CSS3**
@@ -63,6 +63,20 @@ Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma M�
    - Creación de `CartContext` y `CartProvider` para centralizar la lógica de negocio del carrito de compras en toda la aplicación.
 2. **Consumo Global:**
    - Sincronización en tiempo real del precio total y cantidad de productos entre el `Navbar`, la página principal `Home` (botón añadir) y la vista detallada del carrito (`Cart`).
+
+### 🔹 Hito 7: React Router II (Rutas Dinámicas, Autenticación y Protección de Rutas)
+1. **Rutas Dinámicas con `useParams`:**
+   - Configuración de la ruta `/pizza/:id` en `App.jsx`.
+   - Obtención dinámica del `id` en `Pizza.jsx` mediante `useParams()` para realizar el consumo dinámico a la API (`GET /api/pizzas/:id`).
+   - Enlace directo desde las tarjetas del catálogo (`CardPizza.jsx`) hacia la vista de detalle de cada pizza.
+2. **Gestión de Autenticación con `UserContext`:**
+   - Creación de `UserContext` para gestionar globalmente el `token` del usuario y la acción `logout`.
+   - Consumo del contexto en `Navbar.jsx` para alternar la visibilidad de enlaces (Profile/Logout vs Login/Register) y ejecutar la salida del usuario.
+   - Deshabilitación del botón "Pagar" en `Cart.jsx` si el estado de `token` es `false`.
+3. **Protección de Rutas:**
+   - Implementación de redirecciones condicionales mediante `<Navigate />` en `App.jsx`:
+     - Redirección a `/login` si un usuario no autenticado intenta acceder a `/profile`.
+     - Redirección a `/` (Home) si un usuario autenticado intenta acceder a `/login` o `/register`.
 
 ---
 
