@@ -83,6 +83,8 @@ Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma M�
 
 ---
 
+Kisa Rubilar Leal.
+
 ## 🔧 Instalación y Ejecución Local
 
 1. Clonar el repositorio:
