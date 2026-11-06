@@ -1,6 +1,6 @@
 # 🍕 Pizzería Mamma Mía (React + Vite + Bootstrap)
 
-Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma Mía. Este proyecto abarca el desarrollo de la maquetación modular, formularios de autenticación, renderización dinámica de productos, gestión global del carrito de compras, consumo de APIs externas, enrutamiento dinámico y protección de rutas mediante React Router y Context API.
+Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma Mía. Este proyecto abarca desde la maquetación modular y formularios de autenticación hasta la integración con un backend real mediante **JWT**, gestión global de estados, consumo de APIs, enrutamiento dinámico y protección de rutas.
 
 ---
 
@@ -16,6 +16,7 @@ Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma M�
 - **React** (Vite)
 - **React Router DOM**
 - **Context API** (Gestión de Estado Global de Carrito y Usuario)
+- **JWT (JSON Web Tokens)** para autenticación y consumo seguro de endpoints
 - **Bootstrap 5** (CSS y componentes responsivos)
 - **JavaScript (ES6+)**
 - **HTML5 & CSS3**
@@ -38,7 +39,7 @@ Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma M�
 1. **Componentes `RegisterPage` y `LoginPage`:**
    - Formularios interactivos con validación de campos obligatorios, control de longitud mínima de caracteres y coincidencia de contraseñas.
 2. **Manejo de Respuestas:**
-   - Feedback dinámico mediante alertas nativas (`alert`) indicando éxito o errores de validación.
+   - Feedback dinámico mediante alertas indicando éxito o errores de validación.
 
 ### 🔹 Hito 3: Renderización Dinámica de Componentes y Carrito de Compras
 1. **Manejo de Datos Centralizado:**
@@ -54,7 +55,7 @@ Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma M�
 
 ### 🔹 Hito 5: React Router I (Enrutamiento)
 1. **Enrutamiento y Vistas:**
-   - Configuración de `BrowserRouter`, `Routes` y `Route` para manejar las páginas principales (`/`, `/register`, `/login`, `/cart`, `/pizza/p001`, `/profile` y la ruta comodín `404` para páginas no encontradas).
+   - Configuración de `BrowserRouter`, `Routes` y `Route` para manejar las páginas principales (`/`, `/register`, `/login`, `/cart`, `/pizza/:id`, `/profile` y la ruta comodín `404`).
 2. **Navegación Interactiva:**
    - Uso de componentes `<Link>` de `react-router-dom` en el `Navbar`.
 
@@ -62,21 +63,23 @@ Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma M�
 1. **Implementación de Context API:**
    - Creación de `CartContext` y `CartProvider` para centralizar la lógica de negocio del carrito de compras en toda la aplicación.
 2. **Consumo Global:**
-   - Sincronización en tiempo real del precio total y cantidad de productos entre el `Navbar`, la página principal `Home` (botón añadir) y la vista detallada del carrito (`Cart`).
+   - Sincronización en tiempo real del precio total y cantidad de productos entre el `Navbar`, la página principal `Home` y la vista detallada del carrito (`Cart`).
 
-### 🔹 Hito 7: React Router II (Rutas Dinámicas, Autenticación y Protección de Rutas)
+### 🔹 Hito 7: React Router II (Rutas Dinámicas, Autenticación Básica y Protección)
 1. **Rutas Dinámicas con `useParams`:**
-   - Configuración de la ruta `/pizza/:id` en `App.jsx`.
-   - Obtención dinámica del `id` en `Pizza.jsx` mediante `useParams()` para realizar el consumo dinámico a la API (`GET /api/pizzas/:id`).
-   - Enlace directo desde las tarjetas del catálogo (`CardPizza.jsx`) hacia la vista de detalle de cada pizza.
-2. **Gestión de Autenticación con `UserContext`:**
-   - Creación de `UserContext` para gestionar globalmente el `token` del usuario y la acción `logout`.
-   - Consumo del contexto en `Navbar.jsx` para alternar la visibilidad de enlaces (Profile/Logout vs Login/Register) y ejecutar la salida del usuario.
-   - Deshabilitación del botón "Pagar" en `Cart.jsx` si el estado de `token` es `false`.
-3. **Protección de Rutas:**
-   - Implementación de redirecciones condicionales mediante `<Navigate />` en `App.jsx`:
-     - Redirección a `/login` si un usuario no autenticado intenta acceder a `/profile`.
-     - Redirección a `/` (Home) si un usuario autenticado intenta acceder a `/login` o `/register`.
+   - Configuración de la ruta `/pizza/:id` para el consumo detallado de cada producto.
+2. **Protección de Rutas:**
+   - Implementación de redirecciones condicionales mediante `<Navigate />` para restringir vistas como el perfil o los formularios según el estado de sesión del usuario.
+
+### 🔹 Hito 8: Autenticación Real con JWT y Checkout
+1. **Consumo de Endpoints de Autenticación:**
+   - Implementación de los métodos `login` y `register` en `UserContext` conectándose a las rutas `/api/auth/login` y `/api/auth/register` del backend para la obtención y almacenamiento del token JWT y el email.
+2. **Perfil de Usuario y Seguridad:**
+   - Creación del método de obtención de perfil con `/api/auth/me` y cabeceras de autorización (`Bearer token`).
+   - Implementación de la vista `Profile.jsx` mostrando el correo electrónico autenticado y la opción de cerrar sesión (`logout`).
+3. **Proceso de Compra (Checkout):**
+   - Conexión de la página `Cart.jsx` con el endpoint protegido `/api/checkouts` enviando el carrito de compras mediante el header de autorización.
+   - Manejo de alertas visuales de éxito o error al finalizar la transacción.
 
 ---
 
@@ -85,4 +88,3 @@ Aplicación web desarrollada con **React** y **Vite** para la Pizzería Mamma M�
 1. Clonar el repositorio:
    ```bash
    git clone [https://github.com/kisarubilar/hito1-pizzeria.git](https://github.com/kisarubilar/hito1-pizzeria.git)
-Desarrollado por Kisa Rubilar
